@@ -1,0 +1,74 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="robotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Robot head -->
+  <g transform="translate(100, 100)" filter="url(#glow)">
+    <!-- Head base -->
+    <circle cx="0" cy="0" r="40" fill="url(#robotGradient)"/>
+    
+    <!-- Eyes -->
+    <circle class="eye left" cx="-15" cy="-10" r="8" fill="white"/>
+    <circle class="eye right" cx="15" cy="-10" r="8" fill="white"/>
+    <circle class="pupil left" cx="-15" cy="-10" r="4" fill="#7c3aed"/>
+    <circle class="pupil right" cx="15" cy="-10" r="4" fill="#7c3aed"/>
+    
+    <!-- Antenna -->
+    <rect class="antenna" x="-2" y="-50" width="4" height="20" fill="white"/>
+    <circle class="antenna-tip" cx="0" cy="-55" r="5" fill="#7c3aed"/>
+    
+    <!-- Smile -->
+    <path d="M-15,10 Q0,20 15,10" stroke="white" stroke-width="3" fill="none"/>
+    
+    <!-- Medical cross -->
+    <g transform="translate(25, -30)" class="medical-cross">
+      <rect x="-6" y="-1.5" width="12" height="3" fill="white"/>
+      <rect x="-1.5" y="-6" width="3" height="12" fill="white"/>
+    </g>
+  </g>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+    
+    @keyframes blink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+    }
+    
+    @keyframes antennaGlow {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; filter: brightness(1.2); }
+    }
+    
+    .eye {
+      animation: blink 4s infinite;
+      transform-origin: center center;
+    }
+    
+    .pupil {
+      animation: pulse 2s infinite;
+    }
+    
+    .antenna-tip {
+      animation: antennaGlow 1.5s infinite;
+    }
+    
+    .medical-cross {
+      animation: pulse 2s infinite;
+    }
+  </style>
+</svg>
