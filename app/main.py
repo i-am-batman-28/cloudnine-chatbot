@@ -18,7 +18,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],  # React frontend port
@@ -27,7 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize chatbot components
 chatbot_pipeline = ChatbotPipeline()
 empathy_layer = EmpathyLayer()
 
@@ -47,7 +45,6 @@ class ChatResponse(BaseModel):
 async def chat_endpoint(chat_message: ChatMessage):
     """Process chat messages and return formatted responses"""
     def format_response(text: str, points: List[str] = None) -> str:
-        # Add emoji indicators based on content
         if "appointment" in text.lower():
             text = "🗓 " + text
         elif "emergency" in text.lower():
@@ -72,7 +69,6 @@ async def chat_endpoint(chat_message: ChatMessage):
                 session_id=chat_message.session_id or "new_session"
             )
 
-        # Process message through pipeline
         pipeline_response = chatbot_pipeline.process_message(
             chat_message.message,
             chat_message.session_id or "new_session",
