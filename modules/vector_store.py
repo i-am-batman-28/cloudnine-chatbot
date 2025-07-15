@@ -18,7 +18,6 @@ if not PINECONE_API_KEY:
     raise ValueError("⚠️ PINECONE_API_KEY not found in .env")
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 
-
 class VectorStoreManager:
     def __init__(self):
         self.index_name = "cloudnine-hospital"
@@ -31,7 +30,7 @@ class VectorStoreManager:
         self.embeddings = self.load_embeddings()
         self.pinecone = Pinecone(api_key=PINECONE_API_KEY)
         self.vector_store = self._get_or_create_vector_store()
-
+        
     def load_embeddings(self):
         return HuggingFaceEmbeddings(
             model_name=self.embedding_model,
@@ -82,6 +81,7 @@ class VectorStoreManager:
                         doc.metadata.update(metadata)
                     all_docs.extend(docs)
                     logger.info(f"✅ Loaded {file} ({len(docs)} docs)")
+                    
 
             # Load PDFs from guidelines folder
             guideline_dir = self.data_dir / "guidelines"

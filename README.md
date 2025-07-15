@@ -13,6 +13,7 @@ An intelligent, empathetic chatbot designed to enhance patient experience at Clo
 - **Multilingual Support**: Seamless communication in multiple languages
 - **Dynamic UI**: Modern, responsive interface with emoji-enhanced messages
 - **Web Data Integration**: Automatic updates from Cloud9 Hospitals website
+- **WhatsApp Integration**: Direct patient communication through WhatsApp messaging
 
 ## 🛠️ Technical Architecture
 
@@ -42,6 +43,7 @@ An intelligent, empathetic chatbot designed to enhance patient experience at Clo
    - Modern React Frontend
    - Real-time Response Formatting
    - Dynamic Suggestion System
+   - WhatsApp Messaging Integration
 
 ## 🚀 Getting Started
 
@@ -51,6 +53,7 @@ An intelligent, empathetic chatbot designed to enhance patient experience at Clo
 - Node.js 14+
 - npm or yarn package manager
 - pip package manager
+- Plivo WhatsApp Business Account
 
 ### Installation
 
@@ -94,6 +97,11 @@ CHATBOT_HOST=0.0.0.0
 CHATBOT_PORT=8000
 CHATBOT_DEBUG=True
 ALLOWED_ORIGINS=http://localhost:3000
+
+# Plivo WhatsApp Configuration
+PLIVO_AUTH_ID=your_plivo_auth_id
+PLIVO_AUTH_TOKEN=your_plivo_auth_token
+PLIVO_WHATSAPP_NUMBER=your_whatsapp_number
 ```
 
 2. Frontend Configuration:
@@ -141,6 +149,11 @@ Once the server is running, access the API documentation at:
   - Handles message processing with context awareness
   - Supports multilingual input
   - Returns formatted responses with relevant suggestions
+
+- `POST /whatsapp/webhook`: WhatsApp integration endpoint
+  - Handles incoming WhatsApp messages
+  - Processes messages through chatbot pipeline
+  - Sends formatted responses back to WhatsApp
 
 - `GET /health`: Health check endpoint
   - Monitors API availability

@@ -11,6 +11,7 @@ API_CONFIG = {
     'API_TITLE': 'Cloud9 Hospitals Chatbot API',
     'API_DESCRIPTION': 'An empathetic healthcare chatbot for Cloud9 Hospitals'
 }
+    
 
 DATA_CONFIG = {
     'RAW_DATA_DIR': BASE_DIR / 'data' / 'raw' / 'cloudnine_scraped',
@@ -18,6 +19,7 @@ DATA_CONFIG = {
     'INTENTS_FILE': BASE_DIR / 'data' / 'processed' / 'intents.json',
     'DUMMY_DIALOGS_FILE': BASE_DIR / 'data' / 'dummy_dialogs.json'
 }
+
 
 SCRAPER_CONFIG = {
     'BASE_URL': 'https://www.cloudninecare.com',  
@@ -28,6 +30,7 @@ SCRAPER_CONFIG = {
     'RETRY_ATTEMPTS': 3,
     'DELAY_BETWEEN_REQUESTS': 2  # seconds
 }
+
 
 NLP_CONFIG = {
     'INTENT_CLASSIFIER': {

@@ -9,6 +9,7 @@ from pathlib import Path
 
 from app.chatbot_pipeline import ChatbotPipeline
 from app.empathy_layer import EmpathyLayer
+from app.whatsapp_integration import WhatsAppIntegration
 
 project_root = Path(__file__).parent.parent
 
@@ -28,6 +29,10 @@ app.add_middleware(
 
 chatbot_pipeline = ChatbotPipeline()
 empathy_layer = EmpathyLayer()
+whatsapp_integration = WhatsAppIntegration()
+
+# Include WhatsApp routes
+app.include_router(whatsapp_integration.router, tags=["whatsapp"])
 
 class ChatMessage(BaseModel):
     message: str
